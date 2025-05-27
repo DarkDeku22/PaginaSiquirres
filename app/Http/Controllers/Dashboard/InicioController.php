@@ -118,4 +118,10 @@ class InicioController extends Controller
             $data->$atributo = $name;
         }
     }
+
+    public function eliminarPagina($id){
+        $pagina_eli = Config::find($id);
+        $pagina_eli->delete();
+        return redirect()->back();
+    }
 }

@@ -785,10 +785,11 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Cancelar</button>
-
-                                                        <form action="" method="POST">
+                                                      
+                                                        <form action="{{route('eliminarP', $ite->id_config)}}" method="POST">
                                                             @method('delete')
                                                             @csrf
+                                                            <input type="hidden" name="tab" id="activeTabInput" value="{{ request('tab') }}">
                                                             <button type="submit"
                                                                 class="btn btn-danger">Eliminar</button>
                                                         </form>

@@ -44,3 +44,5 @@ Route::get('/contacto',[ControlerGeneral::class, 'contactanos'])->name('contacto
                                             // DASHBOARD
 Route::resource('/administradorSiquirres52',InicioController::class);
 
+Route::delete('eliminar/{id}',[InicioController::class, 'eliminarPagina'])->name('eliminarP');
+
