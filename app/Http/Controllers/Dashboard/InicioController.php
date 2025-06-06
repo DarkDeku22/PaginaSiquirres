@@ -124,4 +124,22 @@ class InicioController extends Controller
         $pagina_eli->delete();
         return redirect()->back();
     }
+
+
+    public function editarPaginasImportantes($id, Request $request){
+
+        $editando = Pagina::find($id);
+
+        $editando->titulo = $request->tituPagina;
+        $editando->descripcion = $request->desPagina;
+
+        $editando->save();
+
+        return back();
+
+    } 
+    
+    public function verPaginasImportantes(){
+        
+    }
 }

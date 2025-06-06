@@ -333,7 +333,7 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form action="" method="POST">
+                                                    <form action="{{ route('editarPag', $pagina->id_pagina) }}" method="POST">
                                                         @method('put')
                                                         @csrf
 
@@ -347,7 +347,7 @@
                                                                 <input type="hidden" name="id_padre" value="1">
 
                                                                 <input type="text" class="form-control colorImput"
-                                                                    name="titulo" maxlength="100"
+                                                                    name="tituPagina" maxlength="100"
                                                                     value="{{ $pagina->titulo }}"
                                                                     placeholder="Escriba el título" required>
                                                             </div>
@@ -356,7 +356,7 @@
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div>
-                                                                    <textarea class="form-control colorImput" id="" rows="10" name="descripcion"
+                                                                    <textarea class="form-control colorImput" id="" rows="10" name="desPagina"
                                                                         placeholder="Escriba la información">{{ $pagina->descripcion }}</textarea>
                                                                 </div>
                                                             </div>

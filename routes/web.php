@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControlerGeneral;
+use App\Http\Controllers\Dashboard\ActividadesController;
 use App\Http\Controllers\Dashboard\InicioController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,9 @@ Route::get('/contacto',[ControlerGeneral::class, 'contactanos'])->name('contacto
 
                                             // DASHBOARD
 Route::resource('/administradorSiquirres52',InicioController::class);
+Route::resource('/administradorActividadesSiquirres52',ActividadesController::class);
 
 Route::delete('eliminar/{id}',[InicioController::class, 'eliminarPagina'])->name('eliminarP');
+
+Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
 

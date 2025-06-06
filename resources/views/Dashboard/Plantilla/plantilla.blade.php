@@ -131,7 +131,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{route('administradorSiquirres52.index')}}">
                     <i class="bi bi-grid-fill"></i>
                     <span>Inicio</span>
                 </a>
@@ -145,7 +145,7 @@
             </li><!-- End Components Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{route('administradorActividadesSiquirres52.index')}}">
                     <i class="bi bi-file-text-fill"></i>
                     <span>Actividades</span>
                 </a>

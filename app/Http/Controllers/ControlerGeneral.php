@@ -19,7 +19,7 @@ class ControlerGeneral extends Controller
 
         $paginas = Pagina::where('id_padre',$principal[0]['id_pagina'])->get();
 
-        $pagImportantes = Pagina::where('titulo', 'Paginas Importantes')->get();
+        $pagImportantes = Pagina::where('id_pagina','=',2)->get();
 
         $config = Config::where('id_pagina',$pagImportantes[0]['id_pagina'])->get();
 
