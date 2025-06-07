@@ -139,7 +139,5 @@ class InicioController extends Controller
 
     } 
     
-    public function verPaginasImportantes(){
-        
-    }
+   
 }

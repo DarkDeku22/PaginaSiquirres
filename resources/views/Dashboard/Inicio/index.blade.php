@@ -10,6 +10,7 @@
             <div class="col-12 col-md-9 mb-3">
 
                 <h1><i class="bi bi-grid-fill"></i> Inicio</h1>
+                <hr>
                 <br>
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
