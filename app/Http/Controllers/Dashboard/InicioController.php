@@ -20,7 +20,7 @@ class InicioController extends Controller
     public function index()
     {
         $data = Slider::all();
-        $dataPagina = Pagina::where('id_padre', 1)->get();
+        $dataPagina = Pagina::where('id_pagina', '=', 2)->get();
         $dataConfig = Config::where('id_pagina', 2)->get();
         $dataImagen = Imagen::where('id_pagina', 1)->get();
         // return $dataConfig;

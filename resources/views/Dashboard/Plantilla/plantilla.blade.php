@@ -138,14 +138,14 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed">
+                <a class="nav-link collapsed" href="{{route('nosotrosSiquirres52.index')}}">
                     <i class="bi bi-menu-button-wide-fill"></i>
                     <span>Nosotros</span>
                 </a>
             </li><!-- End Components Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('administradorActividadesSiquirres52.index')}}">
+                <a class="nav-link collapsed" href="{{route('actividadesSiquirres52.index')}}">
                     <i class="bi bi-file-text-fill"></i>
                     <span>Actividades</span>
                 </a>

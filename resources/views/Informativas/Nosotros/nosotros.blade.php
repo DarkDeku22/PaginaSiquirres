@@ -74,7 +74,7 @@
           @foreach ($config as $item)
             <div class="col-lg-3 col-md-6">
               <div class="stats-item d-flex align-items-center w-100 h-100">
-                <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+                <i class="{{$item['url']}} color-blue flex-shrink-0"></i>
                 <div>
                   <span data-purecounter-start="0" data-purecounter-end={{$item['descripcion']}} data-purecounter-duration="1" class="purecounter"></span>
                   <p>{{$item['titulo1']}}</p>

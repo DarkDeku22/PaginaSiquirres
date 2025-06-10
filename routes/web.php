@@ -3,6 +3,7 @@
 use App\Http\Controllers\ControlerGeneral;
 use App\Http\Controllers\Dashboard\ActividadesController;
 use App\Http\Controllers\Dashboard\InicioController;
+use App\Http\Controllers\Dashboard\NosotrosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,9 +45,19 @@ Route::get('/contacto',[ControlerGeneral::class, 'contactanos'])->name('contacto
 
                                             // DASHBOARD
 Route::resource('/administradorSiquirres52',InicioController::class);
-Route::resource('/administradorActividadesSiquirres52',ActividadesController::class);
+Route::resource('/actividadesSiquirres52',ActividadesController::class);
+Route::resource('/nosotrosSiquirres52',NosotrosController::class);
 
 Route::delete('eliminar/{id}',[InicioController::class, 'eliminarPagina'])->name('eliminarP');
+Route::delete('eliminarAdministrativos/{id}',[NosotrosController::class, 'destroyAdministrativo'])->name('eliminarAdmin');
+Route::delete('eliminarEstadisticas/{id}',[NosotrosController::class, 'destroyEstadisticas'])->name('eliminarEsta');
 
 Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
+Route::put('/editarActividades/{id}', [ActividadesController::class, 'updatePrincipal'])->name('actividadPrincipal');
+Route::put('/editarAdmin/{id}', [NosotrosController::class, 'updateAdmin'])->name('editarAdmin');
+
+
+Route::post('/crearAdministrativo/', [NosotrosController::class, 'storeAdmin'])->name('crearAdmin');
+Route::post('/crearEstadistica/', [NosotrosController::class, 'storeEstadistica'])->name('crearEsta');
+
 

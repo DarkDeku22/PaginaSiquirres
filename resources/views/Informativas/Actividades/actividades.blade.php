@@ -46,30 +46,51 @@
         <div class="row gy-4">
 
           <!-- DEBERIA HABER UN FOREACH PARA CREAR UN APARTADO PARA CADA ACTIVIDAD -->
+<style>
+  .service-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 
+.header-img {
+  width: 100%;
+  height: 180px; /* Puedes ajustar la altura */
+  object-fit: cover; /* Para que la imagen se recorte y llene bien */
+  display: block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+#titulo {
+  margin-top: 20px; /* Ajusta el valor según lo que necesites */
+}
+
+</style>
           @foreach ($con as $item)
               
           <div class="col-lg-6 col-md-8" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
-              <div class="icon">
-                <img src="{{ asset('/public/img/' . $item->imagen) }}" alt="Imagen">
+  <div class="service-item">
+    
+    <img src="{{ $item->imagen }}" class="header-img" alt="Imagen superior">
 
-                {{-- {!!$item->imagen!!} --}}
-              </div>
-              <h3>{{$item->titulo1}}</h3>
-              <p class="etiqueta" style="-webkit-line-clamp: 5">{{$item->descripcion}}</p>
-              <br>
-              @if (strcmp($item->url, null) != 0 )
+    <h3 id="titulo">{{ $item->titulo1 }}</h3>
+    <p class="etiqueta" style="-webkit-line-clamp: 5">{{ $item->descripcion }}</p>
+    <br>
 
-              <button class="boton"><a style="margin-top: 0px" href={{$item->url}} class="readmore stretched-link">Leer más <i class="bi bi-arrow-right"></i></a></button>
-              @else
+    @if ($item->url != null)
+      <button class="boton">
+        <a href="{{ $item->url }}" class="readmore stretched-link">Leer más <i class="bi bi-arrow-right"></i></a>
+      </button>
+    @else
+      <button class="boton">
+        <a href="{{ route('detallesActivi', $item->id_config) }}" class="readmore stretched-link">Leer más <i class="bi bi-arrow-right"></i></a>
+      </button>
+    @endif
 
-              <button class="boton"><a style="margin-top: 0px" href={{route('detallesActivi',$item->id_config)}} class="readmore stretched-link">Leer más <i class="bi bi-arrow-right"></i></a></button>
-              @endif
-              
-           
-            </div>            
-          </div>
+  </div>            
+</div>
+
           
           @endforeach
           <!--FINALIZA EL FOREACH PARA CREAR UN APARTADO PARA CADA ACTIVIDAD -->

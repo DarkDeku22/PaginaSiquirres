@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Config;
+use App\Models\Pagina;
 use Illuminate\Http\Request;
 
 class ActividadesController extends Controller
@@ -16,8 +17,9 @@ class ActividadesController extends Controller
     public function index()
     {
         $actividades = Config::where('id_pagina', '=', 7)->get();
+        $pagina = Pagina::where('id_pagina', '=', 7)->get();
      
-        return view('Dashboard/Actividades/index',compact('actividades'));
+        return view('Dashboard/Actividades/index',compact('actividades','pagina'));
     }
 
     /**
@@ -86,7 +88,29 @@ class ActividadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $actividadE = Config::find($id);
+        $actividadE->id_pagina = $actividadE->id_pagina;
+        $actividadE->titulo1 = $request->tituloE;
+        $actividadE->descripcion = $request->descripcionE;
+        $actividadE->url = $request->urlE;
+        
+         $this->cargarImagen($request,'imagenE',$actividadE,'imagen');
+
+
+        $actividadE -> save();
+         return back();
+    }
+
+        public function updatePrincipal(Request $request, $id)
+    {
+        $pagina = Pagina::find($id);
+        
+        $pagina->titulo = $request->tituActividad;
+        $pagina->descripcion = $request->tituDes;
+
+        $pagina->save();
+
+        return back();
     }
 
     /**
@@ -97,7 +121,10 @@ class ActividadesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $actividadD = Config::find($id);
+        $actividadD->delete();
+
+        return back();
     }
 
         public function cargarImagen(Request $request, $campo,$data,$atributo){

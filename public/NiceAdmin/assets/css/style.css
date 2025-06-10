@@ -1532,4 +1532,17 @@ h6 {
   
 }
 
+  .modal-dialog.modal-alto {
+    max-width: 90%;
+    height: 90vh;
+  }
+
+  .modal-content {
+    height: 100%;
+  }
+
+  .modal-body {
+    overflow-y: auto;
+  }
+
 
