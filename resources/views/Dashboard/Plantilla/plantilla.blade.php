@@ -28,6 +28,7 @@
     <link href="/NiceAdmin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="/NiceAdmin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="/NiceAdmin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    
 
     <!-- Template Main CSS File -->
     <link href="/NiceAdmin/assets/css/style.css" rel="stylesheet">
@@ -152,21 +153,21 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{route('proyectosSiquirres52.index')}}">
                     <i class="bi bi-bar-chart-fill"></i>
                     <span>Proyectos</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{route('contactosSiquirres52.index')}}">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Contactos</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{route('anuSiquirres52.index')}}">
                     <i class="bi bi-file-earmark-image"></i>
                     <span>Anuarios</span>
                 </a>
@@ -237,6 +238,71 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{{ asset('libs/summernote-lite.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{{-- Alertas globales --}}
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: '{{ session('success') }}',
+        confirmButtonColor: '#3085d6'
+    });
+</script>
+@endif
+
+@if(session('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: '¡Error!',
+        text: '{{ session('error') }}',
+        confirmButtonColor: '#d33'
+    });
+</script>
+@endif
+
+@if(session('info'))
+<script>
+    Swal.fire({
+        icon: 'info',
+        title: 'Información',
+        text: '{{ session('info') }}',
+        confirmButtonColor: '#007bff'
+    });
+</script>
+@endif
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const forms = document.querySelectorAll('.form-eliminar');
+
+    forms.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevenir envío inmediato
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡Esta acción no se puede deshacer!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // Solo se envía si confirma
+                }
+            });
+        });
+    });
+});
+</script>
+
 
 
     @include('Dashboard/Partes/js')

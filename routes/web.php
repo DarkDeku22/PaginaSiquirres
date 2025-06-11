@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\ControlerGeneral;
 use App\Http\Controllers\Dashboard\ActividadesController;
+use App\Http\Controllers\Dashboard\AnuariosController;
+use App\Http\Controllers\Dashboard\ContactosController;
 use App\Http\Controllers\Dashboard\InicioController;
 use App\Http\Controllers\Dashboard\NosotrosController;
+use App\Http\Controllers\Dashboard\ProyectosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,10 +46,15 @@ Route::get('/contacto',[ControlerGeneral::class, 'contactanos'])->name('contacto
 
                                             // CIERRE PARTE INFORMATIVA
 
+
+
                                             // DASHBOARD
 Route::resource('/administradorSiquirres52',InicioController::class);
 Route::resource('/actividadesSiquirres52',ActividadesController::class);
 Route::resource('/nosotrosSiquirres52',NosotrosController::class);
+Route::resource('/proyectosSiquirres52',ProyectosController::class);
+Route::resource('/contactosSiquirres52',ContactosController::class);
+Route::resource('/anuSiquirres52',AnuariosController::class);
 
 Route::delete('eliminar/{id}',[InicioController::class, 'eliminarPagina'])->name('eliminarP');
 Route::delete('eliminarAdministrativos/{id}',[NosotrosController::class, 'destroyAdministrativo'])->name('eliminarAdmin');
@@ -55,6 +63,7 @@ Route::delete('eliminarEstadisticas/{id}',[NosotrosController::class, 'destroyEs
 Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
 Route::put('/editarActividades/{id}', [ActividadesController::class, 'updatePrincipal'])->name('actividadPrincipal');
 Route::put('/editarAdmin/{id}', [NosotrosController::class, 'updateAdmin'])->name('editarAdmin');
+Route::put('/editarCont/{id}', [ContactosController::class, 'updateContactos'])->name('editarCon');
 
 
 Route::post('/crearAdministrativo/', [NosotrosController::class, 'storeAdmin'])->name('crearAdmin');

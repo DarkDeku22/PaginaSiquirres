@@ -161,7 +161,7 @@ class ControlerGeneral extends Controller
        $tel = Contacto::where('tipo', 'telefono')->get();
 
     
-        return view('/informativas/Contactanos/contactanos', compact('contacto', 'tel'));
+        return view('/Informativas/Contactos/contactanos', compact('contacto', 'tel'));
 
     }
 
