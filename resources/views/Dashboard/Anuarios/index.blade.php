@@ -121,7 +121,7 @@
                                   style="position: absolute; top: 10px; right: 10px;" class="form-eliminar">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger rounded-circle" title="Eliminar Imagen">
+                                <button type="submit" class="btn btn-sm btn-danger rounded-circle btn-eliminar" title="Eliminar Imagen">
         <i class="bi bi-trash-fill"></i>
     </button>
                             </form>

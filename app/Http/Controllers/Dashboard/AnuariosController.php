@@ -58,7 +58,8 @@ class AnuariosController extends Controller
 
          $generacionN->save();
 
-         return redirect()->back()->with('success', 'Registro creado con éxito.');
+         session()->flash('alert', ['mensaje' => 'Se registró correctamente el préstamo', 'status' => 'success']);
+         return back();
 
        
     }
@@ -116,7 +117,8 @@ class AnuariosController extends Controller
     {
         $imagen = Imagen::find($id);
         $imagen->delete();
-        return redirect()->back()->with('success', 'Registro eliminado correctamente.');
+         session()->flash('alert', ['mensaje' => 'Se Eliminó correctamente la imagen', 'status' => 'success']);
+        return back();
 
     }
 

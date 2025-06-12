@@ -241,53 +241,29 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 {{-- Alertas globales --}}
-@if(session('success'))
+@if (session('alert'))
 <script>
     Swal.fire({
-        icon: 'success',
-        title: '¡Éxito!',
-        text: '{{ session('success') }}',
-        confirmButtonColor: '#3085d6'
+        title: '{{ session('alert')['status'] }}' == 'success' ? "¡Éxito!" : "¡Error!",
+        text: '{{ session('alert')['mensaje'] }}',
+        icon: '{{ session('alert')['status'] }}',
+        timer: 3000,
+        timerProgressBar: true,
+        confirmButtonText: "OK"
     });
 </script>
 @endif
 
-@if(session('error'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: '¡Error!',
-        text: '{{ session('error') }}',
-        confirmButtonColor: '#d33'
-    });
-</script>
-@endif
 
-@if(session('info'))
-<script>
-    Swal.fire({
-        icon: 'info',
-        title: 'Información',
-        text: '{{ session('info') }}',
-        confirmButtonColor: '#007bff'
-    });
-</script>
-@endif
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const forms = document.querySelectorAll('.form-eliminar');
-
-    forms.forEach(form => {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevenir envío inmediato
+    $('.btn-eliminar').click(function(event) {
+            event.preventDefault();
 
             Swal.fire({
-                title: '¿Estás seguro?',
-                text: "¡Esta acción no se puede deshacer!",
-                icon: 'warning',
+                title: "¿Estás seguro de esta acción?",
+                text: "Si lo elimina, se perderá la información en su totalidad.",
+                icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#6c757d',
@@ -295,13 +271,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    form.submit(); // Solo se envía si confirma
+                    $(this).closest("form").submit();
                 }
             });
         });
-    });
-});
 </script>
+
 
 
 
