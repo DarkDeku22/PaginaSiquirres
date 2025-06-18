@@ -18,7 +18,7 @@ class AnuariosController extends Controller
     {
         
 
-        $anuarioGeneral = Pagina::where('id_pagina',9)->get();
+        $anuarioGeneral = Pagina::where('id_pagina',9)->get(); 
     // Solo las imágenes de la página 9
     $imagenesAgrupadas = Imagen::where('id_pagina', 9)
         ->select('titulo', 'id_imagen', 'url','descripcion') // o el nombre real del campo de la imagen
@@ -49,7 +49,7 @@ class AnuariosController extends Controller
     {
 
         // return $request;
-        $generacionN = new Imagen();
+        $generacionN = new Imagen(); 
         $generacionN->id_pagina = $request->id_pagina;
         $generacionN->titulo = $request->gene;
         $generacionN->descripcion = $request->descripcionA;
