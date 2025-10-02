@@ -61,8 +61,14 @@ Route::delete('eliminarAdministrativos/{id}',[NosotrosController::class, 'destro
 Route::delete('eliminarEstadisticas/{id}',[NosotrosController::class, 'destroyEstadisticas'])->name('eliminarEsta');
 
 Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
+Route::put('/editarSlider/{id}', [InicioController::class, 'editarSlider'])->name('editarSlide');
+Route::put('/editarPaginaConfig/{id}', [InicioController::class, 'editarPagina'])->name('editarPaginaConfig');
+Route::post('/crearSlider', [InicioController::class, 'StoreSlide'])->name('crearSlider');
+
 Route::put('/editarActividades/{id}', [ActividadesController::class, 'updatePrincipal'])->name('actividadPrincipal');
+
 Route::put('/editarAdmin/{id}', [NosotrosController::class, 'updateAdmin'])->name('editarAdmin');
+
 Route::put('/editarCont/{id}', [ContactosController::class, 'updateContactos'])->name('editarCon');
 
 

@@ -23,8 +23,9 @@ class InicioController extends Controller
         $dataPagina = Pagina::where('id_pagina', '=', 2)->get();
         $dataConfig = Config::where('id_pagina', 2)->get();
         $dataImagen = Imagen::where('id_pagina', 1)->get();
+         $slid = Slider::all();
         // return $dataConfig;
-        return view ('Dashboard/Inicio/index',compact('data','dataPagina','dataConfig','dataImagen'));
+        return view ('Dashboard/Inicio/index',compact('data','dataPagina','dataConfig','dataImagen','slid'));
 
     }
 
@@ -104,10 +105,16 @@ class InicioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $slider = Slider::find($id);
+
+
+        // return $slider;
+        $slider->delete();
+
+        return back();
     }
 
-    public function cargarImagen(Request $request, $campo,$data,$atributo){
+    public function cargarImagen(Request $request, $campo,$data,$atributoDB){
 
                 if ($request->hasFile($campo)) {
             $file = $request->file($campo);
@@ -115,7 +122,7 @@ class InicioController extends Controller
            $file->move(public_path('assets/img'), $name);
 
 
-            $data->$atributo = $name;
+            $data->$atributoDB = $name;
         }
     }
 
@@ -136,6 +143,55 @@ class InicioController extends Controller
         $editando->save();
 
         return back();
+
+    } 
+        public function editarSlider($id, Request $request){
+
+
+        $sliderE = Slider::find($id);
+      
+        $sliderE -> titulo = $request->titulo;
+        $sliderE -> boton = $request->btnTitulo;
+        $sliderE -> subtitulo = $request-> subtitulo;
+        $sliderE -> url = $request->url;
+
+        $this->cargarImagen($request,'nueva_img',$sliderE,'img');
+
+
+
+        $sliderE->save();
+        return back();
+
+    }
+    
+    public function editarPagina($id, Request $request){
+
+    $configEditar = Config::find($id);
+    $configEditar->id_pagina =  2;
+    $configEditar->titulo1 = $request->titulo;
+    $configEditar->descripcion = $request->descripcion;
+    $configEditar->url = $request->url; 
+
+    $this->cargarImagen($request,'nueva_imagen',$configEditar,'imagen');
+
+    $configEditar->save();
+    return back();
+    } 
+
+    public function StoreSlide(Request $request){
+
+    $sliderN = new Slider();
+
+        $sliderN -> titulo = $request->tituloNuevo;
+        $sliderN -> boton = $request->btnTituloNuevo;
+        $sliderN -> subtitulo = $request-> subtituloNuevo;
+        $sliderN -> url = $request->urlNuevo;
+
+    $this->cargarImagen($request,'nueva_imgNueva',$sliderN,'img');
+
+    $sliderN->save();
+
+    return back();
 
     } 
     

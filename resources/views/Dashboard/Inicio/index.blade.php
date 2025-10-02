@@ -7,7 +7,7 @@
 
         <div class="row pagetitle">
 
-            <div class="col-12 col-md-9 mb-3">
+            <div class="col-12 col-md-12 mb-3">
 
                 <h1><i class="bi bi-grid-fill"></i> Inicio</h1>
                 <hr>
@@ -20,7 +20,9 @@
                             type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Páginas</button>
                     </div>
                 </nav>
-
+                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#crearSlide">
+                        + Crear Slide
+                    </button>
 
                 <div class="tab-content" id="nav-tabContent">
 
@@ -96,13 +98,13 @@
                                                         <div class="">
                                                             <div class="position-absolute top-0 end-0 d-flex">
                                                                 <a href="#" data-bs-toggle="modal"
-                                                                    data-bs-target="#editarSlide{{ $item->id_silader }}"
+                                                                    data-bs-target="#editarSlide{{ $item->id_slader }}"
                                                                     class="btn btn-sm btn-primary-personalizado rounded-circle me-1 d-md-none"
                                                                     title="Editar Slide">
                                                                     <i class="bi bi-pencil-square"></i></a>
 
                                                                 <a href="#" data-bs-toggle="modal"
-                                                                    data-bs-target="#EliminarSlide{{ $item->id_silader }}"
+                                                                    data-bs-target="#EliminarSlide{{ $item->id_slader }}"
                                                                     class="btn btn-sm btn-danger rounded-circle"
                                                                     title="Eliminar Slide">
                                                                     <i class="bi bi-trash-fill"></i></a>
@@ -129,9 +131,9 @@
 
                                                     <div class="modal-body">
 
-                                                        <form action="" method="POST" enctype="multipart/form-data">
-                                                            @method('put')
+                                                        <form action="{{ route('editarSlide', $item->id_slader) }}" method="POST" enctype="multipart/form-data">
                                                             @csrf
+                                                            @method('put')
 
                                                             <div class="px-2 py-2">
                                                                 <div class="row">
@@ -194,7 +196,7 @@
 
                                                                             @if ($item->img)
                                                                                 <div class="text-center">
-                                                                                    <img src="/img/{{ $item->img }}"
+                                                                                    <img src="{{ $item->img }}"
                                                                                         class="mt-2 rounded img-fluid custom-img"
                                                                                         alt="{{ $item->img }}">
                                                                                 </div>
@@ -224,9 +226,74 @@
                                             </div>
                                         </div>
 
+
+                                        <!-- Modal Crear Slide -->
+<div class="modal fade" id="crearSlide" tabindex="-1" aria-labelledby="crearSlideLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title colorTitulos" id="crearSlideLabel">Crear un nuevo Slide</h5>
+                <button class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal">X</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Formulario para crear un nuevo slide -->
+                <form action="{{ route('crearSlider') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="px-2 py-2">
+                        <div class="row">
+
+                            <!-- Columna de formulario -->
+                            <div class="col-lg-6 col-md-12">
+
+                                <div class="">
+                                    <label for="titulo">Título</label>
+                                    <input type="text" class="form-control colorImput" name="tituloNuevo" placeholder="Escriba el título" maxlength="50" required>
+                                </div>
+
+                                <div class="mt-3">
+                                    <label for="url">URL</label>
+                                    <input type="text" class="form-control colorImput" name="urlNuevo" placeholder="Escriba la URL del sitio" maxlength="300" required>
+                                </div>
+
+                                <div class="mt-3">
+                                    <label for="btnTitulo">Botón</label>
+                                    <input type="text" class="form-control colorImput" name="btnTituloNuevo" placeholder="Título del botón" maxlength="50" required>
+                                </div>
+
+                                <div class="mt-3 mb-3">
+                                    <label for="subtitulo">Descripción</label>
+                                    <textarea class="form-control colorImput" name="subtituloNuevo" placeholder="Escribir la descripción" rows="4" maxlength="300" required></textarea>
+                                </div>
+
+                            </div>
+
+                            <!-- Columna de imagen -->
+                            <div class="col-lg-6 col-md-12">
+                                <div class="">
+                                    <label for="nueva_img" class="form-label">Insertar imagen:</label>
+                                    <input class="form-control colorImput form-control2 input-imagen" type="file" name="nueva_imgNueva" accept="image/*" maxlength="100" required>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary-personalizado">Crear Slide</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
                                         <!-- modal Pagina Eliminar-->
 
-                                        <div class="modal fade" id="EliminarSlide{{ $item->id_silader }}">
+                                        <div class="modal fade" id="EliminarSlide{{ $item->id_slader }}">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -248,7 +315,7 @@
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Cancelar</button>
 
-                                                        <form action="" method="POST">
+                                                        <form action="{{ route('administradorSiquirres52.destroy', $item->id_slader) }}" method="POST">
                                                             @method('delete')
                                                             @csrf
                                                             <button type="submit"
@@ -262,7 +329,58 @@
                                     @endforeach
                                 </div>
                             @endif
+
+
                         </section>
+
+                        <h1><i class=""></i> Slider</h1>
+
+
+                        <div class="card mt-4">
+                            <div class="card-body">
+
+                                <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel"
+                                    data-bs-interval="5000">
+                                    <div class="carousel-inner">
+
+                                        @foreach ($slid as $index => $item)
+                                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                                <div class="d-flex justify-content-center align-items-center"
+                                                    style="height: 400px; background-image: url('{{ asset($item->img) }}');
+                                    background-size: cover; background-position: center;">
+
+                                                    <div class="text-center text-white p-4"
+                                                        style="background-color: rgba(0, 0, 0, 0.4); border-radius: 8px;">
+                                                        <h2>{{ $item->titulo }}</h2>
+                                                        <p>{!! $item->subtitulo !!}</p>
+                                                        <a href="{{ route($item->url) }}" class="btn btn-light mt-2">
+                                                            {{ $item->boton }}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+
+                                    <!-- Flechas de control -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"
+                                            style="background-color: rgba(0,0,0,0.5); border-radius: 50%;"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"
+                                            style="background-color: rgba(0,0,0,0.5); border-radius: 50%;"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+
+                                </div>
+
+                            </div>
+                        </div>
 
                     </div>
                     {{-- CIERRE CONTENIDO DEL SLIDER --}}
@@ -334,7 +452,8 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form action="{{ route('editarPag', $pagina->id_pagina) }}" method="POST">
+                                                    <form action="{{ route('editarPag', $pagina->id_pagina) }}"
+                                                        method="POST">
                                                         @method('put')
                                                         @csrf
 
@@ -435,7 +554,7 @@
                                                         </form>
                                                         @if ($imagen->descripcion)
                                                             <div class="text-center">
-                                                                <img src="/img/{{ $imagen->descripcion }}"
+                                                                <img src="{{ $imagen->descripcion }}"
                                                                     class="mt-3 rounded img-fluid"
                                                                     alt="{{ $imagen->descripcion }}">
                                                             </div>
@@ -676,7 +795,7 @@
 
                                                     <div class="modal-body">
 
-                                                        <form action="" method="POST"
+                                                        <form action="{{ route('editarPaginaConfig',$ite->id_config) }}" method="POST"
                                                             enctype="multipart/form-data">
                                                             @method('put')
                                                             @csrf
@@ -690,7 +809,7 @@
                                                                             <label for="">Título</label>
 
                                                                             <input type="hidden" name="id_pagina"
-                                                                                value="1">
+                                                                                value="2">
 
                                                                             <input type="text"
                                                                                 class="form-control colorImput"
@@ -735,7 +854,7 @@
 
                                                                             @if ($ite->imagen)
                                                                                 <div class="text-center">
-                                                                                    <img src="/img/{{ $ite->imagen }}"
+                                                                                    <img src="  {{ $ite->imagen }}"
                                                                                         class="mt-2 rounded img-fluid custom-img"
                                                                                         alt="{{ $ite->imagen }}">
                                                                                 </div>
@@ -786,11 +905,13 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Cancelar</button>
-                                                      
-                                                        <form action="{{route('eliminarP', $ite->id_config)}}" method="POST">
+
+                                                        <form action="{{ route('eliminarP', $ite->id_config) }}"
+                                                            method="POST">
                                                             @method('delete')
                                                             @csrf
-                                                            <input type="hidden" name="tab" id="activeTabInput" value="{{ request('tab') }}">
+                                                            <input type="hidden" name="tab" id="activeTabInput"
+                                                                value="{{ request('tab') }}">
                                                             <button type="submit"
                                                                 class="btn btn-danger">Eliminar</button>
                                                         </form>

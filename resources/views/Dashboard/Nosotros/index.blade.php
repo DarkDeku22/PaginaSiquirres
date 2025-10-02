@@ -3,6 +3,7 @@
 @section('title', 'Actividades - Recinto Siquirres')
 
 @section('index')
+
     <main id="main" class="main">
 
         <div class="row pagetitle">
@@ -156,16 +157,17 @@
 
                                     <!-- Botón Editar -->
                                     <div class="d-grid gap-1 p-2 pt-0">
-                                        <a href="#" data-bs-toggle="modal"
-                                            data-bs-target="#editarAdmin{{ $admin->id_administrativo }}"
-                                            class="btn btn-sm btn-primary-personalizado">Editar</a>
+                                        {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#editarAdmin{{ $admin->id_administrativo }}" class="btn btn-sm btn-primary-personalizado">Editar</a> --}}
+
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#editarAdmin{{ $admin->id_administrativo }}" class="btn btn-sm btn-primary-personalizado">Editar</a>
+
                                     </div>
                                 </div>
                             </div>
                         @endforeach
 
                 {{-- MODAL EDITAR ADMINISTRATIVO --}}
-                 @include('Dashboard/Nosotros/Modales/editarAdmin')
+                 {{-- @include('Dashboard/Nosotros/Modales/editarAdmin') --}}
                  {{-- CIERRE MODAL EDITAR ADMINISTRATIVO --}}
 
                 {{-- MODAL CREAR ADMINISTRATIVO --}}
