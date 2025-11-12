@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
 
-      <form action="{{route('crearEsta')}}" method="POST" enctype="multipart/form-data">
+      <form action="{{route('editarEsta',$esta->id_config)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('post')
 
@@ -16,6 +16,7 @@
           <div class="mb-3">
             <label for="nombreA" class="form-label">Titulo</label>
             <input type="text" class="form-control colorImput" id="nombreA" name="titulo1" value="{{$esta->titulo1}}" maxlength="70" required>
+
             <input type="hidden" class="form-control colorImput" value="{{$estadisticas[0]->id_pagina}}" name="id_pagina" >
           </div>
 

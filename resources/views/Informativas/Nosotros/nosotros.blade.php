@@ -132,8 +132,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Profesores y Equipo Administrativo</h2>
-          <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p>
+          <h2>{{ $profes[0]['titulo'] }}</h2>
+          <p>{{ $profes[0]['descripcion'] }}</p>
         </div>
 
         <div class="row gy-5">

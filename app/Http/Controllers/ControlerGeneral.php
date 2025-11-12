@@ -15,7 +15,7 @@ class ControlerGeneral extends Controller
 
     public function index(){
 
-        $principal = Pagina::where('titulo', 'Inicio')->get();
+        $principal = Pagina::where('id_pagina', '=', 1)->get();
 
         $paginas = Pagina::where('id_padre',$principal[0]['id_pagina'])->get();
 
@@ -23,7 +23,7 @@ class ControlerGeneral extends Controller
 
         $config = Config::where('id_pagina',$pagImportantes[0]['id_pagina'])->get();
 
-        $proy = Pagina::where('titulo', 'Proyectos')->get();
+        $proy = Pagina::where('id_pagina', '=', 8)->get();
 
         $conf =Config::where('id_pagina', $proy[0]['id_pagina'] )->get();
 
@@ -34,7 +34,9 @@ class ControlerGeneral extends Controller
 
     public function nosotros(){
 
-        $padre = Pagina::where('titulo', 'Nosotros')->get(); //EXTRAIGO AL PADRE
+        $padre = Pagina::where('id_pagina', '=', 3)->get();
+
+        $profes = Pagina::where('id_pagina', '=', 11)->get();
 
         $hijasNosotros = Pagina::where('id_padre', $padre[0]['id_pagina'])->get(); //LLAMO A LOS PAGINAS HIJAS DEL PADRE
 
@@ -42,7 +44,13 @@ class ControlerGeneral extends Controller
 
         $config = Config::where('id_pagina', $padre[0]['id_pagina'])->get(); //LLAMOO A LOS CONFIG DEL PADRE
 
+<<<<<<< Updated upstream
        return view('/informativas/Nosotros/nosotros', compact('hijasNosotros', 'texto', 'config'));
+=======
+        $admin = Administrativo::all();
+
+       return view('/informativas/Nosotros/nosotros', compact('hijasNosotros', 'texto', 'config', 'admin','profes'));
+>>>>>>> Stashed changes
         
     }
 
@@ -60,7 +68,7 @@ class ControlerGeneral extends Controller
 
     public function actividades(){
 
-        $activ = Pagina::where('titulo', 'Actividades')->get();
+        $activ = Pagina::where('id_pagina', '=', 7)->get();
 
         $con = Config::where('id_pagina', $activ[0]['id_pagina'])->get();
 
@@ -73,20 +81,20 @@ class ControlerGeneral extends Controller
     public function actividades_detalladas($id){
 
 
-        $activ = Pagina::where('titulo','Actividades')->get();
+        $activ = Pagina::where('id_pagina', '=', 7)->get();
 
         $info = Config::where('id_config', $id)->get();
        
         $img = Imagen::where('titulo', $info[0]['titulo1'])->get();
 
 
-      return view('/informativas/Actividades/actividades-detalladas', compact('activ', 'info', 'img'));
+      return view('/Informativas/Actividades/actividades-detalladas', compact('activ', 'info', 'img'));
     
     }
 
     public function proyectos(){
 
-        $proy = Pagina::where('titulo', 'Proyectos')->get();
+        $proy = Pagina::where('id_pagina', '=', 8)->get();
 
         $conf =Config::where('id_pagina', $proy[0]['id_pagina'] )->get();
 
@@ -105,7 +113,7 @@ class ControlerGeneral extends Controller
 
     public function anuario(){
     
-        $anuario = Pagina::where('titulo', 'Anuario')->get();
+        $anuario = Pagina::where('id_pagina', '=', 9)->get();
         $actual = null;
         $img  = Imagen::where('id_pagina', $anuario[0]['id_pagina'] )->get();
 
@@ -156,7 +164,7 @@ class ControlerGeneral extends Controller
 
     public function contactanos(){
 
-       $contacto = Pagina::where('titulo', 'Contáctanos')->get();
+       $contacto = Pagina::where('id_pagina', '=', 10)->get();
         
        $tel = Contacto::where('tipo', 'telefono')->get();
 

@@ -58,6 +58,7 @@
                 </div>
             </div>
                 </div>
+                @include('Dashboard/Anuarios/modalAdmin')
                 {{-- CIERRE PRIMER NAV --}}
 
 

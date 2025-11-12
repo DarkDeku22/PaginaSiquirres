@@ -52,7 +52,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title colorTitulos">
-                                Configurar Datos del encabezado, sección de <strong>Actividades </strong></h5>
+                                Configurar Datos del encabezado, sección de <strong>{{ $pagina[0]->titulo }} </strong></h5>
                             <button class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal">X</button>
                         </div>
                         <div class="modal-body">
@@ -196,7 +196,7 @@
                                                 <div class="mt-4">
                                                     <label for="">URL</label>
                                                     <input type="text" class="form-control colorImput" name="urlE"
-                                                        value="{{ old('url', $item->url) }}" maxlength="300" required>
+                                                        value="{{ old('url', $item->url) }}" maxlength="300">
                                                 </div>
 
                                                 <div class="mt-4 mb-3">
@@ -292,7 +292,7 @@
 
                                                 <input type="text"class="form-control colorImput" name="url"
                                                     value="" maxlength="300" placeholder="Escriba la URL del sitio"
-                                                    required>
+                                                    >
 
                                             </div>
 

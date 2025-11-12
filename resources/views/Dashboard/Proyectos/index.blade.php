@@ -16,6 +16,26 @@
                     +Registrar Proyecto
                 </a>
             </div>
+
+            <hr><br>
+                            <div class="card info-card customers-card animacion">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $paginaP[0]->titulo }}</h5>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#editarPaginaNosotrosAdministrativos{{ $paginaP[0]->id_pagina }}"
+                        class="btn btn-sm btn-primary-personalizado position-absolute top-0 end-0 rounded-circle"
+                        title="Editar información">
+                        <i class="bi bi-pencil-square" style="color: white"></i></a>
+
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <div class="cartaDescripcion">
+                                    <p>{{ $paginaP[0]->descripcion }}</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+                      @include('Dashboard/Nosotros/Modales/modalAdmin')
             <hr><br>
             {{-- VISTA DE LOS PROYECTOS --}}
              @foreach ($proyectos as $proyec)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Config;
+use App\Models\Pagina;
 use Illuminate\Http\Request;
 
 
@@ -17,8 +18,9 @@ class ProyectosController extends Controller
     public function index()
     {
         $proyectos = Config::where('id_pagina', '=', 8)->get();
+        $paginaP = Pagina::where('id_pagina', '=', 8)->get();
 
-        return view('Dashboard/Proyectos/index',compact('proyectos'));
+        return view('Dashboard/Proyectos/index',compact('proyectos','paginaP'));
     }
 
     /**

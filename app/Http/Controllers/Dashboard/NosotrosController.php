@@ -23,11 +23,13 @@ class NosotrosController extends Controller
 
         // return view('pruebas');
          $pagina = Pagina::where('id_padre', '=', 3)->get();
+         $paginaI = Pagina::where('id_pagina', '=', 3)->get();
+         $paginaP = Pagina::where('id_pagina', '=', 11)->get();
          $administrativos = Administrativo::all();
          $estadisticas = Config::where('id_pagina', '=',3)->get();
 
          
-        return view('Dashboard/Nosotros/index',compact('pagina','administrativos','estadisticas'));
+        return view('Dashboard/Nosotros/index',compact('pagina','administrativos','estadisticas','paginaI','paginaP'));
     }
 
     /**
@@ -182,6 +184,32 @@ class NosotrosController extends Controller
 
 
         $estadistica->save();
+
+        return back();
+    }        
+    
+    
+    public function updateEstadistica(Request $request, $id){
+        $estadistica = Config::find($id);
+
+        $estadistica->id_pagina = $request->id_pagina;
+        $estadistica->titulo1 = $request->titulo1;
+        $estadistica->descripcion = $request->descripcion;
+
+
+        $estadistica->save();
+
+        return back();
+    }
+
+        public function updatePrincipal(Request $request, $id)
+    {
+        $pagina = Pagina::find($id);
+        
+        $pagina->titulo = $request->tituActividad;
+        $pagina->descripcion = $request->tituDes;
+
+        $pagina->save();
 
         return back();
     }

@@ -34,15 +34,34 @@
 
 
 
-
-
-
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+             <div class="card info-card customers-card animacion">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $paginaI[0]->titulo }}</h5>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#editarPaginaNosotros{{ $paginaI[0]->id_pagina }}"
+                        class="btn btn-sm btn-primary-personalizado position-absolute top-0 end-0 rounded-circle"
+                        title="Editar información">
+                        <i class="bi bi-pencil-square" style="color: white"></i></a>
+
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <div class="cartaDescripcion">
+                                    <p>{{ $paginaI[0]->descripcion }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                      @include('Dashboard/Nosotros/modalPrincipal')
+                
+
                     <a href="#" data-bs-toggle="modal" data-bs-target="#registrarNosotros"
-                        class="btn btn-outline-success float-right">
+                        class="btn btn-outline-success">
                         +Registro Nosotros
                     </a>
+
                     <br>
                     <br>
                     <div class="row pagetitle">
@@ -115,6 +134,27 @@
 
                 {{-- CONTENIDO 2 TAP --}}
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                <div class="card info-card customers-card animacion">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $paginaP[0]->titulo }}</h5>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#editarPaginaNosotrosAdministrativos{{ $paginaP[0]->id_pagina }}"
+                        class="btn btn-sm btn-primary-personalizado position-absolute top-0 end-0 rounded-circle"
+                        title="Editar información">
+                        <i class="bi bi-pencil-square" style="color: white"></i></a>
+
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <div class="cartaDescripcion">
+                                    <p>{{ $paginaP[0]->descripcion }}</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+                      @include('Dashboard/Nosotros/Modales/modalAdmin')
+                
+
                     <a href="#" data-bs-toggle="modal" data-bs-target="#registrarAdmin"
                         class="btn btn-outline-success float-right">
                         +Registro Administrativo
@@ -160,10 +200,15 @@
                                             data-bs-target="#editarAdmin{{ $admin->id_administrativo }}"
                                             class="btn btn-sm btn-primary-personalizado">Editar</a>
                                     </div>
+                                    
                                 </div>
                             </div>
+
+                            @include('Dashboard/Nosotros/Modales/editarAdmin')
+
                         @endforeach
 
+<<<<<<< Updated upstream
                 {{-- MODAL EDITAR ADMINISTRATIVO --}}
                  @include('Dashboard/Nosotros/Modales/editarAdmin')
                  {{-- CIERRE MODAL EDITAR ADMINISTRATIVO --}}
@@ -171,6 +216,9 @@
                 {{-- MODAL CREAR ADMINISTRATIVO --}}
                  @include('Dashboard/Nosotros/Modales/registrarAdmin')
                  {{-- CIERRE MODAL CREAR ADMINISTRATIVO --}}
+=======
+             
+>>>>>>> Stashed changes
                     </div>
 
                    

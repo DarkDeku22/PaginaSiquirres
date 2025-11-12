@@ -1,4 +1,4 @@
-@extends('/informativas/plantilla')
+@extends('/Informativas/Plantilla/plantilla')
 
 @section('nav')
 
