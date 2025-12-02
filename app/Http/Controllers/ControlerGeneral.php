@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Administrativo;
 use App\Models\Config;
 use App\Models\Imagen;
 use App\Models\Pagina;
@@ -44,13 +45,9 @@ class ControlerGeneral extends Controller
 
         $config = Config::where('id_pagina', $padre[0]['id_pagina'])->get(); //LLAMOO A LOS CONFIG DEL PADRE
 
-<<<<<<< Updated upstream
-       return view('/informativas/Nosotros/nosotros', compact('hijasNosotros', 'texto', 'config'));
-=======
         $admin = Administrativo::all();
 
        return view('/informativas/Nosotros/nosotros', compact('hijasNosotros', 'texto', 'config', 'admin','profes'));
->>>>>>> Stashed changes
         
     }
 

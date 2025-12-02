@@ -139,5 +139,42 @@ class InicioController extends Controller
 
     } 
     
-   
+   public function StoreSlider(Request $request){
+    $NewSlider = new Slider();
+
+    $NewSlider->boton = $request->boton;
+    $NewSlider->subtitulo = $request-> subtitulo;  
+    $NewSlider->url = $request->url;
+    $NewSlider->img = $request->img;
+
+    $this->cargarImagen($request,'nueva_img',$NewSlider,'img');
+
+    $NewSlider->save();
+
+    return back();
+
+   }
+
+    public function editarSlider(Request $request,$id){
+    $NewSlider = Slider::find($id);
+
+    $NewSlider->boton = $request->boton;
+    $NewSlider->subtitulo = $request-> subtitulo;  
+    $NewSlider->url = $request->url;
+    $NewSlider->img = $request->img;
+
+    $this->cargarImagen($request,'nueva_img',$NewSlider,'img');
+
+    $NewSlider->save();
+
+    return back();
+
+   }
+
+       public function eliminarSlide($id){
+
+        $pagina_eli = Slider::find($id);
+        $pagina_eli->delete();
+        return redirect()->back();
+    }
 }

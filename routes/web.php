@@ -57,20 +57,24 @@ Route::resource('/contactosSiquirres52',ContactosController::class);
 Route::resource('/anuSiquirres52',AnuariosController::class);
 
 Route::delete('eliminar/{id}',[InicioController::class, 'eliminarPagina'])->name('eliminarP');
+Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
+Route::post('/crearSlide', [InicioController::class, 'StoreSlider'])->name('crearSlide');
+Route::delete('eliminarSlide/{id}',[InicioController::class, 'eliminarSlide'])->name('eliminarSlider');
+
+
 Route::delete('eliminarAdministrativos/{id}',[NosotrosController::class, 'destroyAdministrativo'])->name('eliminarAdmin');
 Route::delete('eliminarEstadisticas/{id}',[NosotrosController::class, 'destroyEstadisticas'])->name('eliminarEsta');
+Route::put('/editarNosotrosPrincipal/{id}', [NosotrosController::class, 'updatePrincipal'])->name('nosotrosPrincipal');
+Route::put('/editarAdmin/{id}', [NosotrosController::class, 'updateAdmin'])->name('editarAdmin');
+Route::post('/edtiratEstadistica/{id}', [NosotrosController::class, 'updateEstadistica'])->name('editarEsta');
+Route::post('/crearAdministrativo', [NosotrosController::class, 'storeAdmin'])->name('crearAdmin');
+Route::post('/crearEstadistica', [NosotrosController::class, 'storeEstadistica'])->name('crearEsta');
 
-Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
+
 Route::put('/editarActividades/{id}', [ActividadesController::class, 'updatePrincipal'])->name('actividadPrincipal');
 
-Route::put('/editarNosotrosPrincipal/{id}', [NosotrosController::class, 'updatePrincipal'])->name('nosotrosPrincipal');
-
-Route::put('/editarAdmin/{id}', [NosotrosController::class, 'updateAdmin'])->name('editarAdmin');
 Route::put('/editarCont/{id}', [ContactosController::class, 'updateContactos'])->name('editarCon');
 
 
-Route::post('/crearAdministrativo', [NosotrosController::class, 'storeAdmin'])->name('crearAdmin');
-Route::post('/crearEstadistica', [NosotrosController::class, 'storeEstadistica'])->name('crearEsta');
-Route::post('/edtiratEstadistica/{id}', [NosotrosController::class, 'updateEstadistica'])->name('editarEsta');
 
 
