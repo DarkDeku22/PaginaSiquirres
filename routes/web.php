@@ -62,11 +62,9 @@ Route::delete('eliminarEstadisticas/{id}',[NosotrosController::class, 'destroyEs
 
 Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
 Route::put('/editarActividades/{id}', [ActividadesController::class, 'updatePrincipal'])->name('actividadPrincipal');
-<<<<<<< Updated upstream
-=======
+
 Route::put('/editarNosotrosPrincipal/{id}', [NosotrosController::class, 'updatePrincipal'])->name('nosotrosPrincipal');
 
->>>>>>> Stashed changes
 Route::put('/editarAdmin/{id}', [NosotrosController::class, 'updateAdmin'])->name('editarAdmin');
 Route::put('/editarCont/{id}', [ContactosController::class, 'updateContactos'])->name('editarCon');
 
