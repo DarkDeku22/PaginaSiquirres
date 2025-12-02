@@ -208,17 +208,7 @@
 
                         @endforeach
 
-<<<<<<< Updated upstream
-                {{-- MODAL EDITAR ADMINISTRATIVO --}}
-                 @include('Dashboard/Nosotros/Modales/editarAdmin')
-                 {{-- CIERRE MODAL EDITAR ADMINISTRATIVO --}}
-
-                {{-- MODAL CREAR ADMINISTRATIVO --}}
-                 @include('Dashboard/Nosotros/Modales/registrarAdmin')
-                 {{-- CIERRE MODAL CREAR ADMINISTRATIVO --}}
-=======
              
->>>>>>> Stashed changes
                     </div>
 
                    
