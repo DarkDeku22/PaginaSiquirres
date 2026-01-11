@@ -177,4 +177,19 @@ class InicioController extends Controller
         $pagina_eli->delete();
         return redirect()->back();
     }
+
+        public function editarPagina($id, Request $request){
+
+        $editando = Config::find($id);
+
+        $editando->titulo1 = $request->titulo;
+        $editando->descripcion = $request->descripcion;
+        $editando->url = $request->url;
+
+        $this->cargarImagen($request,'nueva_imagen',$editando,'imagen');
+        $editando->save();
+
+        return back();
+
+    } 
 }

@@ -58,6 +58,7 @@ Route::resource('/anuSiquirres52',AnuariosController::class);
 
 Route::delete('eliminar/{id}',[InicioController::class, 'eliminarPagina'])->name('eliminarP');
 Route::put('/editar/{id}', [InicioController::class, 'editarPaginasImportantes'])->name('editarPag');
+Route::put('/editarPagina/{id}', [InicioController::class, 'editarPagina'])->name('editarPagina');
 Route::post('/crearSlide', [InicioController::class, 'StoreSlider'])->name('crearSlide');
 Route::delete('eliminarSlide/{id}',[InicioController::class, 'eliminarSlide'])->name('eliminarSlider');
 

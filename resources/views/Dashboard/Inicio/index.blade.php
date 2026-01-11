@@ -735,7 +735,7 @@
 
                                                 <div class="modal-body">
 
-                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('editarPagina',$ite->id_config) }}" method="POST" enctype="multipart/form-data">
                                                         @method('put')
                                                         @csrf
 

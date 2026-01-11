@@ -129,69 +129,76 @@
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
-        <ul class="sidebar-nav" id="sidebar-nav">
+<ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('administradorSiquirres52.index')}}">
-                    <i class="bi bi-grid-fill"></i>
-                    <span>Inicio</span>
-                </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('administradorSiquirres52.index') ? 'active' : 'collapsed' }}" 
+           href="{{ route('administradorSiquirres52.index') }}">
+            <i class="bi bi-grid-fill"></i>
+            <span>Inicio</span>
+        </a>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('nosotrosSiquirres52.index')}}">
-                    <i class="bi bi-menu-button-wide-fill"></i>
-                    <span>Nosotros</span>
-                </a>
-            </li><!-- End Components Nav -->
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('nosotrosSiquirres52.index') ? 'active' : 'collapsed' }}" 
+           href="{{ route('nosotrosSiquirres52.index') }}">
+            <i class="bi bi-menu-button-wide-fill"></i>
+            <span>Nosotros</span>
+        </a>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('actividadesSiquirres52.index')}}">
-                    <i class="bi bi-file-text-fill"></i>
-                    <span>Actividades</span>
-                </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('actividadesSiquirres52.index') ? 'active' : 'collapsed' }}" 
+           href="{{ route('actividadesSiquirres52.index') }}">
+            <i class="bi bi-file-text-fill"></i>
+            <span>Actividades</span>
+        </a>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('proyectosSiquirres52.index')}}">
-                    <i class="bi bi-bar-chart-fill"></i>
-                    <span>Proyectos</span>
-                </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('proyectosSiquirres52.index') ? 'active' : 'collapsed' }}" 
+           href="{{ route('proyectosSiquirres52.index') }}">
+            <i class="bi bi-bar-chart-fill"></i>
+            <span>Proyectos</span>
+        </a>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('contactosSiquirres52.index')}}">
-                    <i class="bi bi-person-lines-fill"></i>
-                    <span>Contactos</span>
-                </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('contactosSiquirres52.index') ? 'active' : 'collapsed' }}" 
+           href="{{ route('contactosSiquirres52.index') }}">
+            <i class="bi bi-person-lines-fill"></i>
+            <span>Contactos</span>
+        </a>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('anuSiquirres52.index')}}">
-                    <i class="bi bi-file-earmark-image"></i>
-                    <span>Anuarios</span>
-                </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('anuSiquirres52.index') ? 'active' : 'collapsed' }}" 
+           href="{{ route('anuSiquirres52.index') }}">
+            <i class="bi bi-file-earmark-image"></i>
+            <span>Anuarios</span>
+        </a>
+    </li>
 
-            <li class="nav-heading">Personal</li>
+    <li class="nav-heading">Personal</li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="">
-                    <i class="bi bi-person-fill"></i>
-                    <span>Perfil</span>
-                </a>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('perfil.index') ? 'active' : 'collapsed' }}" href="">
+            <i class="bi bi-person-fill"></i>
+            <span>Perfil</span>
+        </a>
+    </li>
 
-            @if ($user && $user->rol === 'Admin')
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="">
-                        <i class="bi bi-people-fill"></i>
-                        <span>Usuarios</span>
-                    </a>
-                </li>
-            @endif
+    @if ($user && $user->rol === 'Admin')
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('usuarios.index') ? 'active' : 'collapsed' }}" href="">
+                <i class="bi bi-people-fill"></i>
+                <span>Usuarios</span>
+            </a>
+        </li>
+    @endif
 
-        </ul>
+</ul>
+
 
     </aside><!-- End Sidebar-->
 
