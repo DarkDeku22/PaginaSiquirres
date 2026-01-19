@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ControlerGeneral;
 use App\Http\Controllers\Dashboard\ActividadesController;
 use App\Http\Controllers\Dashboard\AnuariosController;
@@ -47,6 +48,7 @@ Route::get('/contacto',[ControlerGeneral::class, 'contactanos'])->name('contacto
                                             // CIERRE PARTE INFORMATIVA
 
 
+Route::middleware(['admin.access'])->group(function () {
 
                                             // DASHBOARD
 Route::resource('/administradorSiquirres52',InicioController::class);
@@ -77,5 +79,12 @@ Route::put('/editarActividades/{id}', [ActividadesController::class, 'updatePrin
 Route::put('/editarCont/{id}', [ContactosController::class, 'updateContactos'])->name('editarCon');
 
 
+});
+// Ruta protegida para probar acceso
+Route::get('/dashboard', function () {
+    return 'Bienvenido al panel.';
+})->middleware('auth');
 
-
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

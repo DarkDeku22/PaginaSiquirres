@@ -3,7 +3,72 @@
 @section('title', 'Inicio - Recinto Siquirres')
 
 @section('index')
-    <main id="main" class="main">
+    @if(session('show_loader'))
+    <style>
+    #loader {
+        position: fixed;
+        inset: 0;
+        background: rgba(17, 78, 143, 0.95);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    #loader.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+    }
+
+    .loader-box {
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .spinner-girasol {
+        width: 80px;
+        height: 80px;
+        animation: girar 2s linear infinite;
+    }
+
+    @keyframes girar {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    #dashboardContent{
+        opacity:0; transition: opacity 1s ease;
+    }
+</style>
+    @endif
+
+    @if(session('show_loader'))
+
+    <div id="loader">
+        <div class="loader-box">
+            <img src="{{ asset('logos/spinnerGirasol.png') }}" alt="Spinner girasol" class="spinner-girasol mb-3">
+            <h5>Cargando panel administrativo...</h5>
+        </div>
+    </div>
+
+    @endif
+
+
+
+        <div id="dashboardContent">
+       <main id="main" class="main">
 
         <div class="row pagetitle">
 
@@ -999,4 +1064,18 @@
 
 
     </main><!-- End #main -->
+        </div>
+
+  @if(session('show_loader'))
+
+    <script>
+    // 🔄 Ocultar loader después de 2 segundos y mostrar dashboard
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.getElementById("loader").classList.add("hidden");
+            document.getElementById("dashboardContent").style.opacity = 1;
+        }, 2000); // 2000 ms = 2 segundos
+    });
+</script>
+    @endif
 @endsection
